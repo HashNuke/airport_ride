@@ -14,9 +14,9 @@
         - if current_user
           = current_user.name
           \-
-          = link_to t(:logout), logout_path
+          = link_to "Logout", logout_path
         - else
-          = link_to t(:facebook_login), "/auth/facebook", :class=>"login_link"
+          = link_to "Login with Facebook", "/auth/facebook", :class=>"login_link"
 
       -if notice
         .notice
