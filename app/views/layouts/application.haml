@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %title Aride
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    .wrapper
+      .user_info
+
+      .header
+        - if current_user
+          = current_user.name
+          \-
+          = link_to t(:logout), logout_path
+        - else
+          = link_to t(:facebook_login), "/auth/facebook", :class=>"login_link"
+
+      -if notice
+        .notice
+          =notice
+
+      .content
+        = yield
+
+      .footer
