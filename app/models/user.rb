@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   def self.create_with_omniauth(auth)
+    logger.debug "AKASH: " + auth.inspect
     create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]

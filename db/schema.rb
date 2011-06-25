@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110625225656) do
+ActiveRecord::Schema.define(:version => 20110625233252) do
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20110625225656) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "access_token"
   end
 
 end
