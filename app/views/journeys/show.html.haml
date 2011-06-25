@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Travel time:
+  = @journey.travel_time
+%p
+  %b Place:
+  = @journey.place
+%p
+  %b User:
+  = @journey.user_id
+
+= link_to 'Edit', edit_journey_path(@journey)
+\|
+= link_to 'Back', journeys_path

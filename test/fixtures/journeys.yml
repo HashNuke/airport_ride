@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  travel_time: 
+  place: MyString
+  user_id: 1
+
+two:
+  travel_time: 
+  place: MyString
+  user_id: 1

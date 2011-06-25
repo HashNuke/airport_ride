@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110625233252) do
+ActiveRecord::Schema.define(:version => 20110625234947) do
+
+  create_table "journeys", :force => true do |t|
+    t.integer  "travel_time"
+    t.string   "place"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

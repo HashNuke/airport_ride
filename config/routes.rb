@@ -1,5 +1,7 @@
 Aride::Application.routes.draw do
 
+  resources :journeys
+
   get "main/index"
   
   root :to=>"main#index"

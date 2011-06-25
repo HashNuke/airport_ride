@@ -1,0 +1,19 @@
+= form_for @journey do |f|
+  -if @journey.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@journey.errors.count, "error")} prohibited this journey from being saved:"
+      %ul
+        - @journey.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :travel_time
+    = f.text_field :travel_time
+  .field
+    = f.label :place
+    = f.text_field :place
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .actions
+    = f.submit 'Save'

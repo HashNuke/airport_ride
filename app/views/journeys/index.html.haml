@@ -1,0 +1,23 @@
+%h1 Listing journeys
+
+%table
+  %tr
+    %th Travel time
+    %th Place
+    %th User
+    %th
+    %th
+    %th
+
+  - @journeys.each do |journey|
+    %tr
+      %td= journey.travel_time
+      %td= journey.place
+      %td= journey.user_id
+      %td= link_to 'Show', journey
+      %td= link_to 'Edit', edit_journey_path(journey)
+      %td= link_to 'Destroy', journey, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Journey', new_journey_path
