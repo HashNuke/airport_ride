@@ -47,6 +47,12 @@ GEM
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
       rack (< 2, >= 1.1.0)
+    haml (3.1.2)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     hike (1.1.0)
     i18n (0.6.0)
     jquery-rails (1.0.12)
@@ -163,6 +169,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-script
+  haml-rails
   jquery-rails
   omniauth
   rails (= 3.1.0.rc4)
