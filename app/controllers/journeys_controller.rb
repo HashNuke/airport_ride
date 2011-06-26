@@ -1,4 +1,7 @@
 class JourneysController < ApplicationController
+  
+  before_filter :auth_user, :only => :request_ride
+  
   # GET /journeys
   # GET /journeys.json
   def index
@@ -45,6 +48,16 @@ class JourneysController < ApplicationController
       format.html # show.html.erb
       format.json { render json: {journey: @journey, possible_matches: @possible_matches} }
     end
+  end
+  
+  def request_ride
+    from_id = params[:from_id]
+    to_id = params[:to_id]
+    
+    @journey = Journey.find(from_id)
+    
+    #if @journey.
+    
   end
 
 
