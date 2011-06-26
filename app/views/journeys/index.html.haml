@@ -4,17 +4,17 @@
   %tr
     %th Travel time
     %th Place
-    %th User
+    %th People
     %th
     %th
     %th
 
   - @journeys.each do |journey|
+    - link_label = journey.possible_matches.length.to_s + " people"
     %tr
-      %td= journey.travel_time
+      %td= journey.travel_stamp.to_s :short
       %td= journey.place
-      %td= journey.user_id
-      %td= link_to 'Show', journey
+      %td= link_to link_label, journey
       %td= link_to 'Edit', edit_journey_path(journey)
       %td= link_to 'Destroy', journey, :confirm => 'Are you sure?', :method => :delete
 

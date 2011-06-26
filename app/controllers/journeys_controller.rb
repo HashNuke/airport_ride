@@ -7,7 +7,7 @@ class JourneysController < ApplicationController
   # GET /journeys
   # GET /journeys.json
   def index
-    # @journeys = Journey.where(:user_id=>current_user.id).order("created_at desc").limit(10)
+    #@journeys = Journey.where(:user_id=>current_user.id).order("created_at desc").limit(10)
     # TODO: uncomment above line after debug and delete below line
     @journeys = Journey.all
     
@@ -25,18 +25,7 @@ class JourneysController < ApplicationController
     #TODO add another field. delete this complex calculation
     #TODO if the journey belongs to the user, then render, else throw error
     
-    t_time = @journey.travel_stamp
-
-    from_time = t_time.change :hour=>-1, :min=>-30
-    to_time = t_time.change :hour=>1, :min=>30
-
-    to_time_string = to_time.strftime "%Y%m%d%H%M"
-    from_time_string = from_time.strftime "%Y%m%d%H%M"
-    
-    from_time_int = from_time_string.to_i
-    to_time_int = to_time_string.to_i
-
-    @possible_matches = Journey.where :travel_time => from_time_int..to_time_int
+    @possible_matches = @journey.possible_matches
     
     # if json, you'll need @possible_matches and @journey in hash
   
@@ -88,7 +77,7 @@ class JourneysController < ApplicationController
 
     respond_to do |format|
       if @journey.save
-        format.html { redirect_to @journey, notice: 'Journey was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Journey was successfully created.' }
         format.json { render json: @journey, status: :created, location: @journey }
       else
         format.html { render action: "new" }

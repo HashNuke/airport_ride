@@ -12,5 +12,8 @@
   .field
     = f.label :place
     = f.text_field :place
+  .field
+    = f.label :direction
+    = f.select :direction, options_for_select([["from airport","from"], ["to airport", "to"]]), :selected => f.object.direction
   .actions
     = f.submit 'Save'

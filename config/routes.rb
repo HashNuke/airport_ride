@@ -6,7 +6,7 @@ Aride::Application.routes.draw do
 
   get "main/index"
   
-  root :to=>"main#index"
+  root :to=>"journeys#index"
 
   # match "/auth/:provider/callback" => "sessions#create"
   # match "/signout" => "sessions#destroy", :as => :signout

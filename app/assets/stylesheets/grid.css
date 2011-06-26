@@ -1,5 +1,5 @@
 /* ================ */
-/* = The 1Kb Grid = */     /* 16 columns, 60 pixels each, with 10 pixel gutter */
+/* = The 1Kb Grid = */     /* 14 columns, 60 pixels each, with 10 pixel gutter */
 /* ================ */
 
 .grid_1 { width:60px; }
@@ -16,8 +16,6 @@
 .grid_12 { width:830px; }
 .grid_13 { width:900px; }
 .grid_14 { width:970px; }
-.grid_15 { width:1040px; }
-.grid_16 { width:1110px; }
 
 .column {
 	margin: 0 5px;
@@ -26,7 +24,7 @@
 	display: inline;
 }
 .row {
-	width: 1120px;
+	width: 980px;
 	margin: 0 auto;
 	overflow: hidden;
 }

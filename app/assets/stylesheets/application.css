@@ -5,3 +5,24 @@
  *= require_self
  *= require_tree . 
 */
+
+body {
+  margin: 0px auto;
+}
+
+.wrapper, .content {
+  width: 970px;
+  margin: 0px auto;
+}
+
+.journey {
+  text 
+}
+
+.journey .date {
+
+}
+
+.journey .place {
+
+}

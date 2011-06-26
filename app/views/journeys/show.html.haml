@@ -1,14 +1,18 @@
-%p#notice= notice
+
+%div{:class=>"row journey"}
+  %div{:class=>"column journey"}
 
 %p
   %b Travel time:
-  = @journey.travel_stamp
+  = @journey.travel_stamp.to_s :short
 %p
   %b Place:
   = @journey.place
-%p
-  %b User:
-  = @journey.user_id
+
+- @journey.possible_matches.each do |m|
+  %p
+    = m.user.email
+    %a{:class=>"ride_request"}Request to ride
 
 = link_to 'Edit', edit_journey_path(@journey)
 \|
