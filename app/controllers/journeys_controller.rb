@@ -70,7 +70,6 @@ class JourneysController < ApplicationController
     end    
   end
 
-
   def new
     @journey = Journey.new
 
