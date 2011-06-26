@@ -29,4 +29,12 @@ gem 'omniauth'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  
+  gem 'rspec-rails'
+  gem 'fabrication'
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'forgery'
+
 end
