@@ -1,12 +1,13 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  helper_method :current_user
+  #helper_method :current_user
   helper_method :auth_user
-  helper_method :user_logged_in?
+  #helper_method :user_logged_in?
 
   private
 
+=begin
   def current_user
     # NOTE: This is because we have to check is the user exists.
     # Encountered an error when the session is valid but a db:reset
@@ -22,7 +23,8 @@ class ApplicationController < ActionController::Base
     return true unless @current_user.nil?
     return false
   end
-  
+=end
+
   def auth_user
     unless current_user
       if request.xhr?
