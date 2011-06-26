@@ -1,5 +1,7 @@
 Aride::Application.routes.draw do
 
+  devise_for :users
+
   resources :journeys
 
   get "main/index"
