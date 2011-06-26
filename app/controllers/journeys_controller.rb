@@ -23,14 +23,8 @@ class JourneysController < ApplicationController
     #TODO add another field. delete this complex calculation
     #TODO if the journey belongs to the user, then render, else throw error
     
-    travel_time = @journey.travel_stamp.to_s
-    t_year = travel_time[0..3].to_i
-    t_month = travel_time[4..5].to_i
-    t_day = travel_time[6..7].to_i
-    t_hour = travel_time[8..9].to_i
-    t_min = travel_time[10..11].to_i
-    
-    t_time = Time.new(t_year, t_month, t_day, t_hour, t_min)
+    t_time = convert_time(@journey.travel_time)
+
     from_time = t_time.change :hour=>-1, :min=>-30
     to_time = t_time.change :hour=>1, :min=>30
 
@@ -72,7 +66,8 @@ class JourneysController < ApplicationController
 
   def new
     @journey = Journey.new
-
+    @journey.travel_time = convert_time(@journey.travel_time)
+        
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @journey }
@@ -82,6 +77,7 @@ class JourneysController < ApplicationController
   # GET /journeys/1/edit
   def edit
     @journey = Journey.find(params[:id])
+    @journey.travel_time = convert_time(@journey.travel_time)
   end
 
   # POST /journeys
@@ -127,4 +123,16 @@ class JourneysController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  def convert_time (t)
+    travel_time = t.to_s
+    t_year = travel_time[0..3].to_i
+    t_month = travel_time[4..5].to_i
+    t_day = travel_time[6..7].to_i
+    t_hour = travel_time[8..9].to_i
+    t_min = travel_time[10..11].to_i
+    
+    return Time.new(t_year, t_month, t_day, t_hour, t_min)
+  end
+  
 end
