@@ -10,12 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110625234947) do
+ActiveRecord::Schema.define(:version => 20110626005238) do
 
   create_table "journeys", :force => true do |t|
     t.integer  "travel_time"
     t.string   "place"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ride_requests", :force => true do |t|
+    t.integer  "journey_id"
+    t.integer  "for_journey_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

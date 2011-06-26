@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  journey_id: 1
+  for_journey_id: 1
+
+two:
+  journey_id: 1
+  for_journey_id: 1
