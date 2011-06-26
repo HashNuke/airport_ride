@@ -1,7 +1,7 @@
 class JourneysController < ApplicationController
   
   before_filter :auth_user, :only => :request_ride
-  before_filter :owned_by_user?, :only =>[:edit, :destroy]
+  before_filter :owned_by_user?, :only =>[:edit, :destroy, :update]
 
 
   # GET /journeys
@@ -77,7 +77,6 @@ class JourneysController < ApplicationController
 
   # GET /journeys/1/edit
   def edit
-    @journey = Journey.find(params[:id])
     @journey.travel_time = convert_time(@journey.travel_time)
   end
 
@@ -101,7 +100,6 @@ class JourneysController < ApplicationController
   # PUT /journeys/1
   # PUT /journeys/1.json
   def update
-    @journey = Journey.find(params[:id])
 
     respond_to do |format|
       if @journey.update_attributes(params[:journey])
