@@ -66,7 +66,7 @@ class JourneysController < ApplicationController
 
   def new
     @journey = Journey.new
-    @journey.travel_time = convert_time(@journey.travel_time)
+    @journey.travel_time = DateTime.now
         
     respond_to do |format|
       format.html # new.html.erb
@@ -84,6 +84,7 @@ class JourneysController < ApplicationController
   # POST /journeys.json
   def create
     @journey = Journey.new(params[:journey])
+    @journey.user_id = current_user.id
 
     respond_to do |format|
       if @journey.save
