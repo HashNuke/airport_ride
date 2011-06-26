@@ -66,8 +66,8 @@ class JourneysController < ApplicationController
 
   def new
     @journey = Journey.new
-    @journey.travel_time = DateTime.now
-        
+    @journey.travel_time = DateTime.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @journey }

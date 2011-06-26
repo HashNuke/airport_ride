@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110626073001) do
+ActiveRecord::Schema.define(:version => 20110626080909) do
 
   create_table "journeys", :force => true do |t|
     t.integer  "travel_time"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110626073001) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "direction"
+    t.datetime "travel_stamp"
   end
 
   create_table "ride_requests", :force => true do |t|
