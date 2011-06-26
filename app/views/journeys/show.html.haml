@@ -9,11 +9,15 @@
   %b Place:
   = @journey.place
 
-- @journey.possible_matches.each do |m|
+- @matches.each do |m|
   %p
-    = m.user.email
-    %a{:class=>"ride_request"}Request to ride
-
+    = m.user.truncated_email
+    - unless @sent_requests.include?(m.id)
+      = puts m.id
+      = link_to "Request to ride", "/journeys/"+@journey.id.to_s+"/?request_to_ride="+m.id.to_s
+    -else
+      [Request has already been sent]
+    
 = link_to 'Edit', edit_journey_path(@journey)
 \|
 = link_to 'Back', journeys_path

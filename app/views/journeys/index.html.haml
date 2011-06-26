@@ -1,23 +1,31 @@
-%h1 Listing journeys
+- if user_signed_in?
 
-%table
-  %tr
-    %th Travel time
-    %th Place
-    %th People
-    %th
-    %th
-    %th
+  -if @journeys.length != 0
 
-  - @journeys.each do |journey|
-    - link_label = journey.possible_matches.length.to_s + " people"
-    %tr
-      %td= journey.travel_stamp.to_s :short
-      %td= journey.place
-      %td= link_to link_label, journey
-      %td= link_to 'Edit', edit_journey_path(journey)
-      %td= link_to 'Destroy', journey, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Journey', new_journey_path
+    %h1 Listing journeys
+    
+    %table
+      %tr
+        %th Travel time
+        %th Place
+        %th People
+        %th
+        %th
+        %th
+    
+      - @journeys.each do |journey|
+        - link_label = journey.possible_matches.length.to_s + " people"
+        %tr
+          %td= journey.travel_stamp.to_s :short
+          %td= journey.place
+          %td= link_to link_label, journey
+          %td= link_to 'Edit', edit_journey_path(journey)
+          %td= link_to 'Destroy', journey, :confirm => 'Are you sure?', :method => :delete
+    -else
+      no journeys found bob!
+      
+  %br
+  
+  = link_to 'New Journey', new_journey_path
+-else
+  not logged in dude
