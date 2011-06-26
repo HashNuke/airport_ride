@@ -54,7 +54,7 @@ class JourneysController < ApplicationController
     if @journeys.empty?
       # then don't do anything bob
       render json: {:error=>"empty"}
-    else if @journeys.length==2 and @ride_request_check.length==0
+    elsif @journeys.length==2 and (@ride_request_check.length==0)
       @ride_request = RideRequest.new(:journey_id=>from_id, :to_id=>to_id)
       if @ride_request.save
         render json: {:msg=>"added"}
@@ -107,7 +107,9 @@ class JourneysController < ApplicationController
         format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @journey.errors, status: :unprocessable_entity }
+        format.json { 
+          render json: {errors: @journey.errors, status: :unprocessable_entity}
+        }
       end
     end
   end
@@ -124,7 +126,7 @@ class JourneysController < ApplicationController
     end
   end
   
-  def convert_time (t)
+  def convert_time(t)
     travel_time = t.to_s
     t_year = travel_time[0..3].to_i
     t_month = travel_time[4..5].to_i
@@ -132,7 +134,7 @@ class JourneysController < ApplicationController
     t_hour = travel_time[8..9].to_i
     t_min = travel_time[10..11].to_i
     
-    return Time.new(t_year, t_month, t_day, t_hour, t_min)
+    Time.new(t_year, t_month, t_day, t_hour, t_min)
   end
   
 end
