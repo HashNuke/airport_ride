@@ -1,7 +1,9 @@
 class JourneysController < ApplicationController
   
   before_filter :auth_user, :only => :request_ride
-  
+  before_filter :owned_by_user?, :only =>[:edit, :destroy]
+
+
   # GET /journeys
   # GET /journeys.json
   def index
@@ -18,12 +20,11 @@ class JourneysController < ApplicationController
   # GET /journeys/1
   # GET /journeys/1.json
   def show
-    @journey = Journey.find(params[:id])
     
     #TODO add another field. delete this complex calculation
     #TODO if the journey belongs to the user, then render, else throw error
     
-    t_time = convert_time(@journey.travel_time)
+    t_time = @journey.travel_stamp
 
     from_time = t_time.change :hour=>-1, :min=>-30
     to_time = t_time.change :hour=>1, :min=>30
@@ -118,7 +119,6 @@ class JourneysController < ApplicationController
   # DELETE /journeys/1
   # DELETE /journeys/1.json
   def destroy
-    @journey = Journey.find(params[:id])
     @journey.destroy
 
     respond_to do |format|
@@ -127,15 +127,12 @@ class JourneysController < ApplicationController
     end
   end
   
-  def convert_time(t)
-    travel_time = t.to_s
-    t_year = travel_time[0..3].to_i
-    t_month = travel_time[4..5].to_i
-    t_day = travel_time[6..7].to_i
-    t_hour = travel_time[8..9].to_i
-    t_min = travel_time[10..11].to_i
-    
-    Time.new(t_year, t_month, t_day, t_hour, t_min)
-  end
+  private
   
+  def owned_by_user?
+    @journey = Journey.find(params[:id])
+    if @journey.user_id != current_user.id
+      redirect_to root_url
+    end
+  end
 end
