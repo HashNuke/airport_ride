@@ -14,8 +14,9 @@ gem 'uglifier'
 gem 'haml-rails'
 
 gem 'jquery-rails'
+gem 'devise'
 
-gem 'omniauth'
+#gem 'omniauth'
 
 # Use unicorn as the web server
 # gem 'unicorn'
