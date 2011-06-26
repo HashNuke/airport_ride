@@ -53,11 +53,21 @@ class JourneysController < ApplicationController
   def request_ride
     from_id = params[:from_id]
     to_id = params[:to_id]
-    
-    @journey = Journey.find(from_id)
-    
-    #if @journey.
-    
+        
+    @journeys = Journey.where(:id=>[from_id,to_id])
+    @request_ride_check = RideRequest.where(:journey_id=>from_id)
+
+    if @journeys.empty?
+      # then don't do anything bob
+      render json: {:error=>"empty"}
+    else if @journeys.length==2 and @ride_request_check.length==0
+      @ride_request = RideRequest.new(:journey_id=>from_id, :to_id=>to_id)
+      if @ride_request.save
+        render json: {:msg=>"added"}
+      else
+        render json: {:msg=>"empty"}
+      end
+    end    
   end
 
 
