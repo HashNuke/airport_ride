@@ -20,7 +20,8 @@ class JourneysController < ApplicationController
   # GET /journeys/1
   # GET /journeys/1.json
   def show
-    
+    @journey = Journey.find(params[:id])
+
     #TODO add another field. delete this complex calculation
     #TODO if the journey belongs to the user, then render, else throw error
     
@@ -77,7 +78,6 @@ class JourneysController < ApplicationController
 
   # GET /journeys/1/edit
   def edit
-    @journey.travel_time = convert_time(@journey.travel_time)
   end
 
   # POST /journeys
